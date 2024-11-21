@@ -1,0 +1,43 @@
+---
+layout: page
+title: Search
+---
+
+{% assign authors = site.posts | map: "author" | compact %}
+{% assign authors = authors | join: ','  | split: ','  | uniq | sort %}
+
+<form role="search">
+<div class="search-control" style="display:none;">
+    <input type="search" id="person-serarch" name="query"
+           placeholder="Keyword Search"
+           aria-label="Search posts using keyword">
+    <input type="search" id="person-search" name="name"
+           placeholder="Search Name"
+           aria-label="Search people using name">
+    <select id="ethnicitieselect" name="ethnicity"
+      aria-label="Dropdown for ethnicity">
+        <option value="">All authors</option>
+        {% for author in authors %}
+          {% if author != '' %}
+          <option value="{{author}}">{{author}}</option>
+          {% endif %}
+        {% endfor %}
+    </select>
+    <button class="custom_button" style="float: right;">Search</button>
+</div>
+</form>
+
+<script src="{{site.baseurl}}/dist/custom-search.js"></script>
+<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/dist/custom-search.css">
+<div id="spinner"><i class="fa fa-spinner fa-spin"></i></div>
+
+<script src="{{site.baseurl}}/js/index.js"></script>
+
+<script>
+    window.addEventListener("load", function(){
+        loadsearchtemplate();
+        $('#spinner').hide();
+    });
+</script>
+    
+
