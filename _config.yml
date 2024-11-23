@@ -38,12 +38,14 @@ plugins:
 lunr_settings:
   collections: [posts]
   displayfields:
-  - {field: author, headerfield: true, highlight: false}
+  - {field: author, headerfield: false, highlight: false}
+  - {field: title, headerfield: true, highlight: false}
   fields:
   - boost: 10
     facetfield: true
     jekyllfields: [author]
     searchfield: author
+  fuzzysearchfields: []
 
 
 # Exclude from processing.
